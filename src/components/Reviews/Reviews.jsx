@@ -10,6 +10,7 @@ const Reviews = () => {
         if (response.data.results !== []) {
           setReviews([...response.data.results]);
         }
+        setReviews(null);
         return;
       })
       .catch(error => console.log(error));
