@@ -6,7 +6,12 @@ const Reviews = () => {
   const { movieId } = useParams();
   useEffect(() => {
     getMovieAdditionalInformation(Number(movieId), 'reviews')
-      .then(response => setReviews([...response.data.results]))
+      .then(response => {
+        if (response.data.results !== []) {
+          setReviews([...response.data.results]);
+        }
+        return;
+      })
       .catch(error => console.log(error));
   }, [movieId]);
 
